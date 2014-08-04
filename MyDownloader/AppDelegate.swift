@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  MyTest
+//  MyDownloader
 //
 //  Created by ay65535 on 2014/08/04.
 //
@@ -20,11 +20,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     }
     
-    var mytest: MyTest!
+    var mydownloader: MyDownloader!
     
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         // Insert code here to initialize your application
-        mytest = MyTest()
+        mydownloader = MyDownloader()
     }
     
     func applicationWillTerminate(aNotification: NSNotification?) {
@@ -32,7 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func btnClicked(sender: AnyObject) {
-        var text = mytest.get()
+        var text = mydownloader.get()
         update(text)
     }
     

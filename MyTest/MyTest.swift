@@ -17,9 +17,9 @@ class MyTest: NSObject {
     let headers: Dictionary<String, String>
     
     init() {
-        dlpath = "~/Downloads/MyTest"
-        datpath = "~/Downloads/MyTest"
-        test_txt = "~/Downloads/MyTest/test.txt"
+        dlpath = "/Users/Shared/MyTest"
+        datpath = "/Users/Shared/MyTest"
+        test_txt = "/Users/Shared/MyTest/test.txt"
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         

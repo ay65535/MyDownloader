@@ -12,6 +12,7 @@
 		2A412C56198F91B600BF571E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A412C55198F91B600BF571E /* Images.xcassets */; };
 		2A412C59198F91B600BF571E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2A412C57198F91B600BF571E /* MainMenu.xib */; };
 		2A412C65198F91B600BF571E /* MyDownloaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A412C64198F91B600BF571E /* MyDownloaderTests.swift */; };
+		2A6A32F41994166B00DA6043 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A6A32F31994166B00DA6043 /* Utility.swift */; };
 		2ADCF19F198F923300FDC6FE /* MyDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ADCF19E198F923300FDC6FE /* MyDownloader.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		2A412C5E198F91B600BF571E /* MyDownloaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyDownloaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A412C63198F91B600BF571E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2A412C64198F91B600BF571E /* MyDownloaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyDownloaderTests.swift; sourceTree = "<group>"; };
+		2A6A32F31994166B00DA6043 /* Utility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
 		2ADCF19E198F923300FDC6FE /* MyDownloader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyDownloader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,6 +84,7 @@
 				2A412C57198F91B600BF571E /* MainMenu.xib */,
 				2A412C4F198F91B600BF571E /* Supporting Files */,
 				2ADCF19E198F923300FDC6FE /* MyDownloader.swift */,
+				2A6A32F31994166B00DA6043 /* Utility.swift */,
 			);
 			path = MyDownloader;
 			sourceTree = "<group>";
@@ -210,6 +213,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A6A32F41994166B00DA6043 /* Utility.swift in Sources */,
 				2A412C54198F91B600BF571E /* AppDelegate.swift in Sources */,
 				2A412C52198F91B600BF571E /* main.swift in Sources */,
 				2ADCF19F198F923300FDC6FE /* MyDownloader.swift in Sources */,

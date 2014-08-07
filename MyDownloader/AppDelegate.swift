@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var txtField: NSTextField
     @IBOutlet var scrollView: NSScrollView
     @IBOutlet var scrollView2: NSScrollView
+    @IBOutlet var scrollView3: NSScrollView
     
     var txtView : NSTextView {
     get {
@@ -24,6 +25,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var txtView2 : NSTextView {
     get {
         return scrollView2.contentView.documentView as NSTextView
+    }
+    }
+    
+    var txtView3 : NSTextView {
+    get {
+        return scrollView3.contentView.documentView as NSTextView
     }
     }
     
@@ -43,6 +50,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateSubjectTxtView(text)
         var dat = mydownloader.getDat(txtField.stringValue)
         updateDatTxtView(dat)
+        var urls = mydownloader.grepUrls(dat)
+        updateUrlTxtView(urls)
     }
     
     func updateSubjectTxtView(text: String) {
@@ -51,6 +60,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateDatTxtView(dat: String) {
         txtView2.insertText(dat)
+    }
+    
+    func updateUrlTxtView(urls: String) {
+        txtView3.insertText(urls)
     }
 }
 

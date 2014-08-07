@@ -53,4 +53,23 @@ class MyDownloader: NSObject {
             return "Error"
         }
     }
+    
+    func grepUrls(dat: String) -> String {
+        var urls: String = ""
+        let regex: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(
+            "ttps?://[-_.!~*a-zA-Z0-9;/?:@&=+$,%#]+\\.[jpgb][pnim][egfp]g?",
+            options: NSRegularExpressionOptions.CaseInsensitive,
+            error: nil)
+        
+        var matches: [NSTextCheckingResult] = regex.matchesInString(
+            dat,
+            options: NSMatchingOptions(0),
+            range: NSMakeRange(0, dat.utf16count)) as [NSTextCheckingResult]
+        
+        for match in matches {
+            urls += "h\(dat[match.range])\n"
+        }
+        
+        return urls
+    }
 }

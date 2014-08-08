@@ -15,6 +15,7 @@ class MyDownloader: NSObject {
     let test_txt: NSString
     let user_agent: String
     let headers: Dictionary<String, String>
+    var error: NSError!
     
     init() {
         println("MyDownloader")
@@ -36,7 +37,11 @@ class MyDownloader: NSObject {
     }
     
     func getSubjecttxt() -> String {
-        return NSString.stringWithContentsOfFile(test_txt, encoding: NSShiftJISStringEncoding, error: nil)
+        if let subject_txt = NSString.stringWithContentsOfFile(test_txt, encoding: NSShiftJISStringEncoding, error: nil) {
+            return subject_txt
+        } else {
+            return ""
+        }
         
         // 1行ずつ文字列を列挙
         // var strings: [String] = []
@@ -50,7 +55,7 @@ class MyDownloader: NSObject {
         if let dat = NSString.stringWithContentsOfFile(datpath, encoding: NSShiftJISStringEncoding, error: nil) {
             return dat
         } else {
-            return "Error"
+            return ""
         }
     }
     

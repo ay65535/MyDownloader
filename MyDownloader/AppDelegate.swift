@@ -52,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         updateDatTxtView(dat)
         var urls = mydownloader.grepUrls(dat)
         updateUrlTxtView(urls)
+        
     }
     
     func updateSubjectTxtView(text: String) {

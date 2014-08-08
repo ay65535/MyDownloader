@@ -10,12 +10,12 @@ import Cocoa
 
 class MyDownloader: NSObject {
     
-    let dlpath: NSString
+    let dlpath: String
     let datpath: String
-    let test_txt: NSString
+    let test_txt: String
     let user_agent: String
     let headers: Dictionary<String, String>
-    var error: NSError!
+    //var error: NSError!
     
     init() {
         println("MyDownloader")
@@ -49,6 +49,25 @@ class MyDownloader: NSObject {
         //     NSLog("%@", line)
         //     strings += line
         // })
+    }
+    
+    func grepSubjects(subjectTxt: String) -> String {
+        var subjects: String = ""
+        let regex: NSRegularExpression = NSRegularExpression.regularExpressionWithPattern(
+            "<>.* \\([0-9]",
+            options: NSRegularExpressionOptions.CaseInsensitive,
+            error: nil)
+        
+        var matches: [NSTextCheckingResult] = regex.matchesInString(
+            subjectTxt,
+            options: NSMatchingOptions(0),
+            range: NSMakeRange(0, subjectTxt.utf16count)) as [NSTextCheckingResult]
+        
+        for match in matches {
+            subjects += "\(subjectTxt[match.range.location + 2...match.range.location + match.range.length - 4])\n"
+        }
+        
+        return subjects
     }
     
     func getDat(datpath: String) -> String {

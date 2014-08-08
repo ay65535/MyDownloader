@@ -19,18 +19,18 @@ class MyDownloader: NSObject {
     
     init() {
         println("MyDownloader")
-        dlpath = "/Users/Shared/test"
-        datpath = "/Users/Shared/test"
-        test_txt = "/Users/Shared/test/test.txt"
+        dlpath = "~/test".stringByExpandingTildeInPath
+        datpath = "~/test".stringByExpandingTildeInPath
+        test_txt = "~/test/test.txt".stringByExpandingTildeInPath
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
     }
     
     init(datpath: String) {
         println("MyDownloader")
-        dlpath = "/Users/Shared/test"
-        self.datpath = datpath
-        test_txt = "/Users/Shared/test/test.txt"
+        dlpath = "~/test".stringByExpandingTildeInPath
+        self.datpath = datpath.stringByExpandingTildeInPath
+        test_txt = "~/test/test.txt".stringByExpandingTildeInPath
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         
@@ -52,7 +52,8 @@ class MyDownloader: NSObject {
     }
     
     func getDat(datpath: String) -> String {
-        if let dat = NSString.stringWithContentsOfFile(datpath, encoding: NSShiftJISStringEncoding, error: nil) {
+        let datFullpath = datpath.stringByExpandingTildeInPath
+        if let dat = NSString.stringWithContentsOfFile(datFullpath, encoding: NSShiftJISStringEncoding, error: nil) {
             return dat
         } else {
             return ""

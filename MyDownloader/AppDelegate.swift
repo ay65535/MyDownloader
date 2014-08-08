@@ -13,12 +13,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var window: NSWindow
     @IBOutlet var txtField: NSTextField
     @IBOutlet var scrollView: NSScrollView
+    @IBOutlet var grepSbjecttxtScrollView: NSScrollView
     @IBOutlet var scrollView2: NSScrollView
     @IBOutlet var scrollView3: NSScrollView
     
     var txtView : NSTextView {
     get {
         return scrollView.contentView.documentView as NSTextView
+    }
+    }
+    
+    var grepSbjecttxtTxtView : NSTextView {
+    get {
+        return grepSbjecttxtScrollView.contentView.documentView as NSTextView
     }
     }
     
@@ -46,10 +53,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func btnClicked(sender: AnyObject) {
-        var text = mydownloader.getSubjecttxt()
-        updateSubjectTxtView(text)
+        var subjectTxt = mydownloader.getSubjecttxt()
+        updateSubjectTxtView(subjectTxt)
+        
+        var subjects = mydownloader.grepSubjects(subjectTxt)
+        updateGrepSubjectView(subjects)
+        
         var dat = mydownloader.getDat(txtField.stringValue)
         updateDatTxtView(dat)
+        
         var urls = mydownloader.grepUrls(dat)
         updateUrlTxtView(urls)
         
@@ -57,6 +69,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateSubjectTxtView(text: String) {
         txtView.insertText(text)
+    }
+    
+    func updateGrepSubjectView(subjects: String) {
+        grepSbjecttxtTxtView.insertText(subjects)
     }
     
     func updateDatTxtView(dat: String) {

@@ -1,6 +1,6 @@
 //
-//  MyTestTests.swift
-//  MyTestTests
+//  MyDownloaderTests.swift
+//  MyDownloaderTests
 //
 //  Created by ay65535 on 2014/08/04.
 //
@@ -9,7 +9,7 @@
 import Cocoa
 import XCTest
 
-class MyTestTests: XCTestCase {
+class MyDownloaderTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

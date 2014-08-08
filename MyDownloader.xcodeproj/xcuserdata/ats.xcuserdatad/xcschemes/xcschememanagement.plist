@@ -4,7 +4,7 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>MyTest.xcscheme</key>
+		<key>MyDownloader.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
@@ -12,12 +12,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>2A5D8D5E198ED3E30090C5A7</key>
+		<key>2A412C4B198F91B600BF571E</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2A5D8D70198ED3E40090C5A7</key>
+		<key>2A412C5D198F91B600BF571E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -13,6 +13,8 @@
         <customObject id="-3" userLabel="Application"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MyDownloader" customModuleProvider="target">
             <connections>
+                <outlet property="grepSbjecttxtScrolView" destination="HVQ-ZD-LFb" id="B7o-qp-Fn6"/>
+                <outlet property="grepSbjecttxtScrollView" destination="HVQ-ZD-LFb" id="WKE-vF-iwa"/>
                 <outlet property="scrolView3" destination="vAT-Xv-8Ti" id="qTK-wB-pos"/>
                 <outlet property="scrollView" destination="d78-4z-Keb" id="Lnh-q6-GFQ"/>
                 <outlet property="scrollView2" destination="Q6g-nk-Kii" id="C8l-p4-H0L"/>
@@ -889,7 +891,7 @@ DQ
                     <constraint firstItem="vAT-Xv-8Ti" firstAttribute="trailing" secondItem="Q6g-nk-Kii" secondAttribute="trailing" id="zwu-qW-8Aa"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="165" y="627"/>
+            <point key="canvasLocation" x="169" y="667"/>
         </window>
     </objects>
 </document>

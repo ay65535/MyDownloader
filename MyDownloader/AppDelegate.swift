@@ -10,12 +10,12 @@ import Cocoa
 
 class AppDelegate: NSObject, NSApplicationDelegate {
     
-    @IBOutlet var window: NSWindow
-    @IBOutlet var txtField: NSTextField
-    @IBOutlet var scrollView: NSScrollView
-    @IBOutlet var grepSbjecttxtScrollView: NSScrollView
-    @IBOutlet var scrollView2: NSScrollView
-    @IBOutlet var scrollView3: NSScrollView
+    @IBOutlet weak var window: NSWindow!
+    @IBOutlet weak var txtField: NSTextField!
+    @IBOutlet weak var scrollView: NSScrollView!
+    @IBOutlet weak var grepSbjecttxtScrollView: NSScrollView!
+    @IBOutlet weak var scrollView2: NSScrollView!
+    @IBOutlet weak var scrollView3: NSScrollView!
     
     var txtView : NSTextView {
     get {
@@ -53,13 +53,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     @IBAction func btnClicked(sender: AnyObject) {
+        mydownloader.datpath = txtField.stringValue
+        var datpath = mydownloader.datpath
+        
         var subjectTxt = mydownloader.getSubjecttxt()
-        updateSubjectTxtView(subjectTxt)
         
-        var subjects = mydownloader.grepSubjects(subjectTxt)
-        updateGrepSubjectView(subjects)
+        //var subjects = mydownloader.grepSubjects(subjectTxt)
+        var (subjects, subject) = mydownloader.grepSubjectAtDatname(datpath, subjectTxt: subjectTxt)
+        updateSubjectView(subjects)
+        updateGrepSubjectView(subject)
         
-        var dat = mydownloader.getDat(txtField.stringValue)
+        var dat = mydownloader.getDat(datpath)
         updateDatTxtView(dat)
         
         var urls = mydownloader.grepUrls(dat)
@@ -67,7 +71,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func updateSubjectTxtView(text: String) {
+    func updateSubjectView(text: String) {
         txtView.insertText(text)
     }
     

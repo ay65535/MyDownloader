@@ -80,11 +80,11 @@
 			isa = PBXGroup;
 			children = (
 				2A412C53198F91B600BF571E /* AppDelegate.swift */,
+				2ADCF19E198F923300FDC6FE /* MyDownloader.swift */,
+				2A6A32F31994166B00DA6043 /* Utility.swift */,
 				2A412C55198F91B600BF571E /* Images.xcassets */,
 				2A412C57198F91B600BF571E /* MainMenu.xib */,
 				2A412C4F198F91B600BF571E /* Supporting Files */,
-				2ADCF19E198F923300FDC6FE /* MyDownloader.swift */,
-				2A6A32F31994166B00DA6043 /* Utility.swift */,
 			);
 			path = MyDownloader;
 			sourceTree = "<group>";

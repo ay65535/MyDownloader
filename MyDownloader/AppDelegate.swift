@@ -18,27 +18,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var scrollView3: NSScrollView!
     
     var txtView : NSTextView {
-    get {
-        return scrollView.contentView.documentView as NSTextView
-    }
+        get {
+            return scrollView.contentView.documentView as NSTextView
+        }
     }
     
     var grepSbjecttxtTxtView : NSTextView {
-    get {
-        return grepSbjecttxtScrollView.contentView.documentView as NSTextView
-    }
+        get {
+            return grepSbjecttxtScrollView.contentView.documentView as NSTextView
+        }
     }
     
     var txtView2 : NSTextView {
-    get {
-        return scrollView2.contentView.documentView as NSTextView
-    }
+        get {
+            return scrollView2.contentView.documentView as NSTextView
+        }
     }
     
     var txtView3 : NSTextView {
-    get {
-        return scrollView3.contentView.documentView as NSTextView
-    }
+        get {
+            return scrollView3.contentView.documentView as NSTextView
+        }
     }
     
     var mydownloader: MyDownloader!
@@ -46,10 +46,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(aNotification: NSNotification?) {
         // Insert code here to initialize your application
         mydownloader = MyDownloader()
+        var datpath = mydownloader.readUserDefaults().datpath
+        updateTxtField(datpath)
     }
     
     func applicationWillTerminate(aNotification: NSNotification?) {
         // Insert code here to tear down your application
+        mydownloader.writeUserDefaultsToFile(debug: true, datpath: txtField.stringValue)
+    }
+    
+    override func controlTextDidEndEditing(obj: NSNotification!) {
+        println("controlTextDidEndEditing\nobj.object.stringValue: \(obj.object.stringValue)")
+        println("txtField.stringValue: \(txtField.stringValue)")
+        if mydownloader {
+            mydownloader.writeUserDefaultsToFile(debug: true, datpath: obj.object.stringValue)
+        }
     }
     
     @IBAction func btnClicked(sender: AnyObject) {
@@ -69,6 +80,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var urls = mydownloader.grepUrls(dat)
         updateUrlTxtView(urls)
         
+    }
+    
+    func updateTxtField(aDatpath: String) {
+        txtField.stringValue = aDatpath
     }
     
     func updateSubjectView(text: String) {

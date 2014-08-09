@@ -29,7 +29,7 @@ class MyDownloader: NSObject {
         headers = ["User-Agent": user_agent]
         super.init()
         initUserDefaults()
-        writeUserDefaultsToFile()
+        var defaults = readUserDefaults()
     }
     
     init(aDatpath: String) {
@@ -41,16 +41,28 @@ class MyDownloader: NSObject {
         headers = ["User-Agent": user_agent]
         super.init()
         initUserDefaults()
-        writeUserDefaultsToFile()
     }
     
     func initUserDefaults() -> NSUserDefaults {
         userDefaults = NSUserDefaults.standardUserDefaults()
-        userDefaults.setBool(true, forKey: "debug")
         return userDefaults
     }
     
-    func writeUserDefaultsToFile() {
+    func readUserDefaults() -> (debug: Bool, datpath: String) {
+        var defaults: (debug: Bool, datpath: String) = (false, "")
+        if userDefaults.boolForKey("debug") {
+            defaults.debug = true
+        }
+        if var aDatpath = userDefaults.stringForKey("datpath") {
+            defaults.datpath = aDatpath
+        }
+        
+        return defaults
+    }
+    
+    func writeUserDefaultsToFile(debug: Bool = false, datpath: String? = "") {
+        userDefaults.setBool(debug, forKey: "debug")
+        userDefaults.setObject(datpath, forKey: "datpath")
         userDefaults.synchronize()
     }
     

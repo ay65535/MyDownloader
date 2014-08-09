@@ -13,9 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="MyDownloader" customModuleProvider="target">
             <connections>
-                <outlet property="grepSbjecttxtScrolView" destination="HVQ-ZD-LFb" id="B7o-qp-Fn6"/>
                 <outlet property="grepSbjecttxtScrollView" destination="HVQ-ZD-LFb" id="WKE-vF-iwa"/>
-                <outlet property="scrolView3" destination="vAT-Xv-8Ti" id="qTK-wB-pos"/>
                 <outlet property="scrollView" destination="d78-4z-Keb" id="Lnh-q6-GFQ"/>
                 <outlet property="scrollView2" destination="Q6g-nk-Kii" id="C8l-p4-H0L"/>
                 <outlet property="scrollView3" destination="vAT-Xv-8Ti" id="P0e-pH-k3k"/>
@@ -855,6 +853,9 @@ DQ
                             <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <outlet property="delegate" destination="Voe-Tx-rLC" id="dtK-Ih-gtC"/>
+                        </connections>
                     </textField>
                 </subviews>
                 <constraints>

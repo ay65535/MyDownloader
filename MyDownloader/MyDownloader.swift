@@ -15,6 +15,9 @@ class MyDownloader: NSObject {
     let test_txt: String
     let user_agent: String
     let headers: Dictionary<String, String>
+    var userDefaults: NSUserDefaults!
+    // TODO: userDefautsのgetter/setterは？
+    
     //var error: NSError!
     
     override init() {
@@ -25,6 +28,8 @@ class MyDownloader: NSObject {
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         super.init()
+        initUserDefaults()
+        var defaults = readUserDefaults()
     }
     
     init(aDatpath: String) {
@@ -35,7 +40,30 @@ class MyDownloader: NSObject {
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         super.init()
+        initUserDefaults()
+    }
+    
+    func initUserDefaults() -> NSUserDefaults {
+        userDefaults = NSUserDefaults.standardUserDefaults()
+        return userDefaults
+    }
+    
+    func readUserDefaults() -> (debug: Bool, datpath: String) {
+        var defaults: (debug: Bool, datpath: String) = (false, "")
+        if userDefaults.boolForKey("debug") {
+            defaults.debug = true
+        }
+        if var aDatpath = userDefaults.stringForKey("datpath") {
+            defaults.datpath = aDatpath
+        }
         
+        return defaults
+    }
+    
+    func writeUserDefaultsToFile(debug: Bool = false, datpath: String? = "") {
+        userDefaults.setBool(debug, forKey: "debug")
+        userDefaults.setObject(datpath, forKey: "datpath")
+        userDefaults.synchronize()
     }
     
     func getSubjecttxt() -> String {

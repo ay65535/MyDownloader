@@ -15,6 +15,9 @@ class MyDownloader: NSObject {
     let test_txt: String
     let user_agent: String
     let headers: Dictionary<String, String>
+    var userDefaults: NSUserDefaults!
+    // TODO: userDefautsのgetter/setterは？
+    
     //var error: NSError!
     
     override init() {
@@ -25,6 +28,8 @@ class MyDownloader: NSObject {
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         super.init()
+        initUserDefaults()
+        writeUserDefaultsToFile()
     }
     
     init(aDatpath: String) {
@@ -35,7 +40,18 @@ class MyDownloader: NSObject {
         user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.77.4 (KHTML, like Gecko) Version/7.0.5 Safari/537.77.4"
         headers = ["User-Agent": user_agent]
         super.init()
-        
+        initUserDefaults()
+        writeUserDefaultsToFile()
+    }
+    
+    func initUserDefaults() -> NSUserDefaults {
+        userDefaults = NSUserDefaults.standardUserDefaults()
+        userDefaults.setBool(true, forKey: "debug")
+        return userDefaults
+    }
+    
+    func writeUserDefaultsToFile() {
+        userDefaults.synchronize()
     }
     
     func getSubjecttxt() -> String {

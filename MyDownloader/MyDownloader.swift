@@ -187,12 +187,14 @@ class MyDownloader: NSObject {
             return ("", "")
         }
     }
-
+    
     func initDataGetter() {
         dataGetter = MDDataGetter()
     }
     
-    func downloadContents() {
-        dataGetter.downloadContents()
+    func downloadContents(aUrls: String, anImageView: NSImageView!) {
+        let urls = aUrls.componentsSeparatedByString("\n")
+        
+        urls.map{self.dataGetter.downloadImage($0, anImageView: anImageView)}
     }
 }

@@ -17,6 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var scrollView2: NSScrollView!
     @IBOutlet weak var scrollView3: NSScrollView!
     @IBOutlet weak var scrollView4: NSScrollView!
+    @IBOutlet weak var tableView: NSTableView!
     @IBOutlet weak var imageView: NSImageView!
     
     var txtView : NSTextView {
@@ -83,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var urls = mydownloader.grepUrls(dat)
         updateUrlTxtView(urls)
         
-        mydownloader.downloadContents()
+        mydownloader.downloadContents(urls, anImageView: imageView)
     }
     
     func updateTxtField(aDatpath: String) {
@@ -104,6 +105,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateUrlTxtView(urls: String) {
         txtView3.insertText(urls)
+    }
+    
+    func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
+        return 50
+    }
+    func tableView(tableView: NSTableView, viewForTableColumn: NSTableColumn, row: Int) -> NSView {
+        var cell = tableView.makeViewWithIdentifier("List", owner: self) as NSTableCellView
+        cell.textField.stringValue = "Hey, this is a cell"
+        return cell;
     }
 }
 

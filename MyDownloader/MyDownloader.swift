@@ -17,6 +17,7 @@ class MyDownloader: NSObject {
     let headers: Dictionary<String, String>
     var userDefaults: NSUserDefaults!
     // TODO: userDefautsのgetter/setterは？
+    var dataGetter: MDDataGetter!
     
     //var error: NSError!
     
@@ -62,7 +63,7 @@ class MyDownloader: NSObject {
     
     func writeUserDefaultsToFile(debug: Bool = false, datpath: String? = "") {
         userDefaults.setBool(debug, forKey: "debug")
-        userDefaults.setObject(datpath, forKey: "datpath")
+        userDefaults.setObject(datpath!, forKey: "datpath")
         userDefaults.synchronize()
     }
     
@@ -185,5 +186,13 @@ class MyDownloader: NSObject {
         } else {
             return ("", "")
         }
+    }
+
+    func initDataGetter() {
+        dataGetter = MDDataGetter()
+    }
+    
+    func downloadContents() {
+        dataGetter.downloadContents()
     }
 }

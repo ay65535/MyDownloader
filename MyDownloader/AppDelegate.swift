@@ -16,6 +16,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var grepSbjecttxtScrollView: NSScrollView!
     @IBOutlet weak var scrollView2: NSScrollView!
     @IBOutlet weak var scrollView3: NSScrollView!
+    @IBOutlet weak var scrollView4: NSScrollView!
+    @IBOutlet weak var imageView: NSImageView!
     
     var txtView : NSTextView {
         get {
@@ -48,6 +50,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         mydownloader = MyDownloader()
         var datpath = mydownloader.readUserDefaults().datpath
         updateTxtField(datpath)
+        mydownloader.initDataGetter()
     }
     
     func applicationWillTerminate(aNotification: NSNotification?) {
@@ -58,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     override func controlTextDidEndEditing(obj: NSNotification!) {
         println("controlTextDidEndEditing\nobj.object.stringValue: \(obj.object.stringValue)")
         println("txtField.stringValue: \(txtField.stringValue)")
-        if mydownloader {
+        if (mydownloader != nil) {
             mydownloader.writeUserDefaultsToFile(debug: true, datpath: obj.object.stringValue)
         }
     }
@@ -80,6 +83,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var urls = mydownloader.grepUrls(dat)
         updateUrlTxtView(urls)
         
+        mydownloader.downloadContents()
     }
     
     func updateTxtField(aDatpath: String) {

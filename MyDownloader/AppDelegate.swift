@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSTableViewDataSource, NSTableViewDelegate {
     
     @IBOutlet weak var window: NSWindow!
     @IBOutlet weak var txtField: NSTextField!
@@ -52,6 +52,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         var datpath = mydownloader.readUserDefaults().datpath
         updateTxtField(datpath)
         mydownloader.initDataGetter()
+        //self.tableView.reloadData()
     }
     
     func applicationWillTerminate(aNotification: NSNotification?) {
@@ -110,10 +111,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func numberOfRowsInTableView(aTableView: NSTableView!) -> Int {
         return 50
     }
-    func tableView(tableView: NSTableView, viewForTableColumn: NSTableColumn, row: Int) -> NSView {
-        var cell = tableView.makeViewWithIdentifier("List", owner: self) as NSTableCellView
-        cell.textField.stringValue = "Hey, this is a cell"
-        return cell;
+//    func tableView(tableView: NSTableView!, viewForTableColumn: NSTableColumn!, row: Int) -> NSView {
+//        var cell = tableView.makeViewWithIdentifier("List", owner: self) as NSTableCellView
+//        cell.textField.stringValue = "Hey, this is a cell"
+//        return cell;
+//    }
+    func tableView(tableView: NSTableView!, objectValueForTableColumn tableColumn: NSTableColumn!, row: Int) -> AnyObject! {
+        // var string:String = "row " + String(row) + ", Col" + String(tableColumn.identifier)
+        // return string
+        var newString: (AnyObject?) = getDataArray().objectAtIndex(row).objectForKey(tableColumn.identifier)
+        return newString;
+    }
+    func getDataArray () -> NSArray {
+        var dataArray:[NSDictionary] = [["FirstName": "Debasis", "LastName": "Das"],
+            ["FirstName": "Nishant", "LastName": "Singh"],
+            ["FirstName": "John", "LastName": "Doe"],
+            ["FirstName": "Jane", "LastName": "Doe"],
+            ["FirstName": "Mary", "LastName": "Jane"]];
+        println(dataArray);
+        return dataArray;
     }
 }
 
